@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
 function HomeContent() {
 	const classes = useStyles();
 	return (<Paper className={classes.paper}>
-		<Typography component="h1" variant="h3">Welcome to ScrollRole!</Typography>
+		<Typography component="h1" variant="h4">Welcome to ScrollRole!</Typography>
 		<Typography paragraph={true}>
 			ScrollRole is a website for building fifth edition (5e) Dungeons and Dragons characters while following
 			all terms of the Open Gaming License in the System Reference Document
