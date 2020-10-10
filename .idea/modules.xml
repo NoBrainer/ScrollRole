@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/scrollrole-react.iml" filepath="$PROJECT_DIR$/.idea/scrollrole-react.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/scrollrole.iml" filepath="$PROJECT_DIR$/.idea/scrollrole.iml" />
     </modules>
   </component>
 </project>
