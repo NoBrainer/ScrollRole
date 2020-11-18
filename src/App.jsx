@@ -2,12 +2,12 @@ import {CssBaseline} from "@material-ui/core";
 import {makeStyles, ThemeProvider} from "@material-ui/core/styles";
 import clsx from "clsx";
 import {APP_BAR_HEIGHT, APP_DRAWER_WIDTH} from "common/Constants";
-import {useDrawerState} from "common/State";
 import AppContent from "components/AppContent";
 import AppDrawer from "components/AppDrawer";
 import AppFooter from "components/AppFooter";
 import AppHeader from "components/AppHeader";
 import React from "react";
+import {useSelector} from "react-redux";
 import {BrowserRouter} from "react-router-dom";
 import theme from "theme";
 
@@ -36,22 +36,15 @@ const useStyles = makeStyles((theme) => ({
 
 function App() {
 	const classes = useStyles();
-	const [isDrawerOpen, setDrawerOpen] = useDrawerState();
-
-	const handleDrawerClose = () => {
-		setDrawerOpen(false);
-	};
-	const handleDrawerOpen = () => {
-		setDrawerOpen(true);
-	};
+	const isDrawerOpen = useSelector((state) => state.drawer.isOpen);
 
 	return (
 		<ThemeProvider theme={theme}>
 			<CssBaseline/>
 			<BrowserRouter>
 				<div className={classes.root}>
-					<AppHeader isDrawerOpen={isDrawerOpen} handleDrawerOpen={handleDrawerOpen}/>
-					<AppDrawer isDrawerOpen={isDrawerOpen} handleDrawerClose={handleDrawerClose}/>
+					<AppHeader/>
+					<AppDrawer/>
 					<div className={clsx(classes.wrapper, {[classes.wrapperShift]: isDrawerOpen,})}>
 						<AppContent/>
 						<AppFooter/>

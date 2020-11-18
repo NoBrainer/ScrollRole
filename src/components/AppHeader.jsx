@@ -4,8 +4,9 @@ import {Menu} from "@material-ui/icons";
 import logo from "assets/logo.svg";
 import clsx from "clsx";
 import {APP_BAR_HEIGHT, APP_DRAWER_WIDTH} from "common/Constants";
-import PropTypes from "prop-types";
+import {open} from "common/redux/ducks/drawer";
 import React from "react";
+import {useDispatch, useSelector} from "react-redux";
 import {Link} from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
@@ -44,13 +45,20 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-function AppHeader(props) {
+function AppHeader() {
 	const classes = useStyles();
+	const dispatch = useDispatch();
+	const isDrawerOpen = useSelector((state) => state.drawer.isOpen);
+
+	const handleDrawerOpen = () => {
+		dispatch(open());
+	};
+
 	return (
-		<AppBar position="fixed" className={clsx(classes.appBar, {[classes.appBarShift]: props.isDrawerOpen,})}>
+		<AppBar position="fixed" className={clsx(classes.appBar, {[classes.appBarShift]: isDrawerOpen,})}>
 			<Toolbar>
-				<IconButton color="inherit" aria-label="open drawer" onClick={props.handleDrawerOpen} edge="start"
-							className={clsx(classes.menuButton, props.isDrawerOpen && classes.hide)}>
+				<IconButton color="inherit" aria-label="open drawer" onClick={handleDrawerOpen} edge="start"
+							className={clsx(classes.menuButton, isDrawerOpen && classes.hide)}>
 					<Menu/>
 				</IconButton>
 				<Link className={classes.logo} to="/">
@@ -60,10 +68,5 @@ function AppHeader(props) {
 		</AppBar>
 	);
 }
-
-AppHeader.propTypes = {
-	isDrawerOpen: PropTypes.bool,
-	handleDrawerOpen: PropTypes.func.isRequired,
-};
 
 export default AppHeader

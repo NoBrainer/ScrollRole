@@ -2,9 +2,10 @@ import {Collapse, Divider, Drawer, IconButton, List, ListItem, ListItemIcon, Lis
 import {makeStyles} from "@material-ui/core/styles";
 import {ChevronLeft, Home, MenuBook, People} from "@material-ui/icons";
 import {APP_BAR_HEIGHT, APP_DRAWER_WIDTH} from "common/Constants";
+import {close} from "common/redux/ducks/drawer";
 import {buildUrl, usePageState} from "common/State";
-import PropTypes from "prop-types";
 import React from "react";
+import {useDispatch, useSelector} from "react-redux";
 import {Link} from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
@@ -24,9 +25,15 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-function AppDrawer(props) {
+function AppDrawer() {
 	const classes = useStyles();
+	const dispatch = useDispatch();
+	const isDrawerOpen = useSelector((state) => state.drawer.isOpen);
 	const [pageState] = usePageState();
+
+	const handleDrawerClose = () => {
+		dispatch(close());
+	};
 
 	const renderListItem = (text, pageId, IconEle) => {
 		const url = buildUrl(pageId);
@@ -67,10 +74,10 @@ function AppDrawer(props) {
 	};
 
 	return (
-		<Drawer className={classes.drawer} variant="persistent" anchor="left" open={props.isDrawerOpen}
+		<Drawer className={classes.drawer} variant="persistent" anchor="left" open={isDrawerOpen}
 				classes={{paper: classes.drawerPaper}}>
 			<div className={classes.drawerHeader}>
-				<IconButton onClick={props.handleDrawerClose}>
+				<IconButton onClick={handleDrawerClose}>
 					<ChevronLeft/>
 				</IconButton>
 			</div>
@@ -87,10 +94,5 @@ function AppDrawer(props) {
 		</Drawer>
 	);
 }
-
-AppDrawer.propTypes = {
-	isDrawerOpen: PropTypes.bool,
-	handleDrawerClose: PropTypes.func.isRequired,
-};
 
 export default AppDrawer

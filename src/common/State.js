@@ -1,33 +1,12 @@
-import {COOKIES, PAGE_IDS, SECTION_IDS} from "common/Constants";
-import {deleteCookie, getCookie, setCookie} from "common/Cookies";
+import {PAGE_IDS, SECTION_IDS} from "common/Constants";
 import _ from "lodash";
-import {useEffect, useReducer, useState} from "react";
+import {useEffect, useReducer} from "react";
 import {useLocation} from "react-router-dom";
 
 // Helper function to build the URL based on pageId and sectionId
 export const buildUrl = (pageId, sectionId) => {
 	return sectionId ? `/${pageId}/${sectionId}` : `/${pageId}`;
 };
-
-// Custom hook for the isDrawerOpen boolean, based on a cookie
-export function useDrawerState() {
-	const [isDrawerOpen, setDrawerOpen] = useState(determineIsDrawerOpen());
-
-	// Update the cookie when the drawer state changes
-	useEffect(() => {
-		if (isDrawerOpen) {
-			setCookie(COOKIES.DRAWER, "o");
-		} else {
-			deleteCookie(COOKIES.DRAWER);
-		}
-	}, [isDrawerOpen]);
-
-	return [isDrawerOpen, setDrawerOpen];
-
-	function determineIsDrawerOpen() {
-		return getCookie(COOKIES.DRAWER) === "o";
-	}
-}
 
 // Custom hook for the pageState object, based on location
 export function usePageState() {
