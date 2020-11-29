@@ -10,6 +10,7 @@
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
     "clsx": "^1.1.1",
+    "dexie": "^3.0.2",
     "fontsource-roboto": "^3.0.3",
     "http-proxy-middleware": "^1.0.5",
     "lodash": "^4.17.20",
@@ -19,6 +20,7 @@
     "react-redux": "^7.2.2",
     "react-router-dom": "^5.2.0",
     "redux": "^4.0.5",
+    "redux-thunk": "^2.3.0",
     "winston": "^3.3.3"
   },
   "devDependencies": {

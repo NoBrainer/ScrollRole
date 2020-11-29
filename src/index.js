@@ -1,10 +1,12 @@
 import App from "App";
-import store from "common/redux/configureStore";
+import store, {initializeStore} from "common/redux/configureStore";
 import "fontsource-roboto";
 import React from "react";
 import ReactDOM from "react-dom";
 import {Provider} from "react-redux";
 import * as serviceWorker from "serviceWorker";
+
+initializeStore();
 
 ReactDOM.render(
 	<Provider store={store}>
