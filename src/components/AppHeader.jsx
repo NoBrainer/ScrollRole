@@ -4,7 +4,7 @@ import {Menu} from "@material-ui/icons";
 import logo from "assets/logo.svg";
 import clsx from "clsx";
 import {APP_BAR_HEIGHT, APP_DRAWER_WIDTH} from "common/Constants";
-import {open} from "common/redux/ducks/drawer";
+import {openDrawer} from "common/redux/ducks/drawer";
 import React from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {Link} from "react-router-dom";
@@ -51,7 +51,7 @@ function AppHeader() {
 	const isDrawerOpen = useSelector((state) => state.drawer.isOpen);
 
 	const handleDrawerOpen = () => {
-		dispatch(open());
+		dispatch(openDrawer());
 	};
 
 	return (

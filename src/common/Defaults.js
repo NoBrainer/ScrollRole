@@ -10,3 +10,8 @@ export const PAPER_STYLES = {
 	margin: '20px 0',
 	padding: '20px',
 };
+
+export const INITIAL_RULES_STATE = {rulesList: []};
+export const PRELOADED_STATE = {
+	rules: INITIAL_RULES_STATE
+};

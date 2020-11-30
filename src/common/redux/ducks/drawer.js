@@ -5,11 +5,11 @@ import {deleteCookie, getCookie, setCookie} from "common/Cookies";
 const CLOSE = "scrollrole/drawer/close";
 const OPEN = "scrollrole/drawer/open";
 
-// Action creators
-export const close = () => {
+// Actions
+export const closeDrawer = () => {
 	return {type: CLOSE};
 };
-export const open = () => {
+export const openDrawer = () => {
 	return {type: OPEN};
 };
 

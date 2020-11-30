@@ -2,8 +2,8 @@ import {Collapse, Divider, Drawer, IconButton, List, ListItem, ListItemIcon, Lis
 import {makeStyles} from "@material-ui/core/styles";
 import {ChevronLeft, Home, MenuBook, People} from "@material-ui/icons";
 import {APP_BAR_HEIGHT, APP_DRAWER_WIDTH} from "common/Constants";
-import {close} from "common/redux/ducks/drawer";
-import {buildUrl, usePageState} from "common/State";
+import {buildUrl, usePageState} from "common/PageState";
+import {closeDrawer} from "common/redux/ducks/drawer";
 import React from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {Link} from "react-router-dom";
@@ -32,7 +32,7 @@ function AppDrawer() {
 	const [pageState] = usePageState();
 
 	const handleDrawerClose = () => {
-		dispatch(close());
+		dispatch(closeDrawer());
 	};
 
 	const renderListItem = (text, pageId, IconEle) => {

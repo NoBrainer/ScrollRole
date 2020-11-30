@@ -1,21 +1,19 @@
+import {PRELOADED_STATE} from "common/Defaults";
 import drawerReducer from "common/redux/ducks/drawer";
 import rulesReducer, {loadRules} from "common/redux/ducks/rules";
 import {applyMiddleware, combineReducers, compose, createStore} from "redux";
 import thunk from "redux-thunk";
 
-//https://github.com/dfahlander/Dexie.js/tree/master/samples/react-redux/src
-
 const rootReducer = combineReducers({
 	drawer: drawerReducer,
 	rules: rulesReducer,
 });
+const enhancer = compose(applyMiddleware(thunk));
 
-const initialState = {rules: []};
-
-const store = createStore(rootReducer, initialState, compose(applyMiddleware(thunk)));
+const store = createStore(rootReducer, PRELOADED_STATE, enhancer);
 
 export const initializeStore = () => {
 	store.dispatch(loadRules());
-}
+};
 
 export default store

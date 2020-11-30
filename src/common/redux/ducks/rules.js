@@ -1,5 +1,6 @@
 import defaultConfig from "assets/config/default.yaml";
 import db from "common/db";
+import {PRELOADED_STATE} from "common/Defaults";
 import yaml from "js-yaml";
 import _ from "lodash";
 
@@ -39,17 +40,18 @@ export const loadRules = () => {
 		loadDefaultRules().then((defaultRules) => {
 			db.table('rules')
 				.toArray()
-				.then((rules) => {
-					dispatch({type: LOAD_RULES, payload: rules});
-
-					if (_.isEmpty(rules)) {
+				.then((rulesList) => {
+					if (_.isEmpty(rulesList)) {
+						// Add default rules to an empty rules list
 						const rulesToAdd = Object.assign({}, defaultRules);
 						db.table('rules')
 							.add(rulesToAdd)
 							.then((id) => {
 								rulesToAdd.id = id;
-								dispatch({type: ADD_RULES, payload: rulesToAdd});
+								dispatch({type: LOAD_RULES, payload: [rulesToAdd]});
 							});
+					} else {
+						dispatch({type: LOAD_RULES, payload: rulesList});
 					}
 				});
 		});
@@ -91,27 +93,27 @@ function loadDefaultRules() {
 	});
 }
 
-const initialState = {rules: []};
+const initialState = PRELOADED_STATE.rules;
 
 // Reducer
 const reducer = (state = initialState, {type, payload}) => {
 	switch(type) {
 		case LOAD_RULES:
-			return {...state, rules: payload};
+			return {...state, rulesList: payload};
 		case ADD_RULES:
-			return {...state, rules: [...state.rules, payload]};
+			return {...state, rulesList: [...state.rulesList, payload]};
 		case UPDATE_RULES:
-			const rulesToUpdate = state.rules.find((rules) => rules.id === payload.id);
+			const rulesToUpdate = state.rulesList.find((rules) => rules.id === payload.id);
 			const updatedRules = Object.assign({}, rulesToUpdate, {name: payload.name, config: payload.config});
 			return {
 				...state,
-				rules: [
-					...state.rules.filter((rules) => rules.id !== payload.id),
+				rulesList: [
+					...state.rulesList.filter((rules) => rules.id !== payload.id),
 					updatedRules,
 				]
 			};
 		case DELETE_RULES:
-			return {...state, rules: state.rules.filter((rules) => rules.id !== payload)}
+			return {...state, rulesList: state.rulesList.filter((rules) => rules.id !== payload)}
 		default:
 			return state; //unchanged
 	}
