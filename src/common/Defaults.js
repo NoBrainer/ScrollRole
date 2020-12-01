@@ -10,6 +10,10 @@ export const PAPER_STYLES = {
 	margin: '0 0 20px 0',
 	padding: '20px',
 };
+export const WRAPPER_STYLES = {
+	margin: 0,
+	padding: '0 0 20px 0',
+};
 
 export const INITIAL_RULES_STATE = {rulesList: []};
 export const PRELOADED_STATE = {
