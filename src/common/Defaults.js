@@ -7,7 +7,7 @@ export const EXTERNAL_LINK_PROPS = {
 
 export const PAPER_STYLES = {
 	flex: 1,
-	margin: '20px 0',
+	margin: '0 0 20px 0',
 	padding: '20px',
 };
 

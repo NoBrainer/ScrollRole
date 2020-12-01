@@ -1,6 +1,7 @@
-import {Paper} from "@material-ui/core";
+import {Grid, Paper, Typography} from "@material-ui/core";
 import {makeStyles} from "@material-ui/core/styles";
 import {PAPER_STYLES} from "common/Defaults";
+import Background from "components/rules/Background";
 import React from "react";
 import {useSelector} from "react-redux";
 
@@ -11,16 +12,30 @@ const useStyles = makeStyles((theme) => ({
 function RulesForBackgrounds() {
 	const classes = useStyles();
 	const rulesList = useSelector((state) => state.rules.rulesList);
+	const currentRules = rulesList.length > 0 ? rulesList[0] : {};
+	const currentBackgrounds = currentRules.backgrounds;
 
-	//TODO: Use these rules
-	console.log(rulesList);
-
-	const renderPaperContent = () => {
-		if (!rulesList) return `[Loading...]`;
-		return `[Rules Customizer - Backgrounds - UNDER CONSTRUCTION]`;
+	const renderBackgrounds = () => {
+		if (!currentBackgrounds) return renderLoadingPlaceholder();
+		return currentBackgrounds.map(renderBackground);
 	};
 
-	return (<Paper className={classes.paper}>{renderPaperContent()}</Paper>);
+	const renderLoadingPlaceholder = () => {
+		return (<Paper className={classes.paper}>[Loading...]</Paper>);
+	};
+
+	const renderBackground = (background, i) => {
+		return (<Background key={i} background={background}/>);
+	};
+
+	return (
+		<Grid container direction="column">
+			<Paper className={classes.paper}>
+				<Typography component="h1" variant="h4" display="block">Backgrounds</Typography>
+			</Paper>
+			{renderBackgrounds()}
+		</Grid>
+	);
 }
 
 export default RulesForBackgrounds
