@@ -2,6 +2,7 @@ import {Accordion, AccordionDetails, AccordionSummary, Typography} from "@materi
 import {makeStyles} from "@material-ui/core/styles";
 import {ExpandMore} from "@material-ui/icons";
 import {PAPER_STYLES} from "common/Defaults";
+import Description from "components/rules/Description";
 import PropTypes from "prop-types";
 import React from "react";
 
@@ -12,15 +13,17 @@ const useStyles = makeStyles((theme) => ({
 
 function Background(props) {
 	const classes = useStyles();
+	const {background, summaryId} = props;
+	const {description, name} = background;
 
 	//TODO: populate the entire structure
 	return (
 		<Accordion className={classes.accordion}>
-			<AccordionSummary expandIcon={<ExpandMore/>} aria-controls="background-panel-content" id={props.summaryId}>
-				<Typography component="h2" variant="h5">{props.background.name}</Typography>
+			<AccordionSummary expandIcon={<ExpandMore/>} aria-controls="background-panel-content" id={summaryId}>
+				<Typography component="h2" variant="h5">{name}</Typography>
 			</AccordionSummary>
 			<AccordionDetails>
-				<Typography>[UNDER CONSTRUCTION]</Typography>
+				<Description description={description}/>
 			</AccordionDetails>
 		</Accordion>
 	);
