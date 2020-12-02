@@ -9,26 +9,12 @@ function Features(props) {
 
 	if (isEmpty(features)) return null;
 
-	const renderFeatures = () => {
-		return features.map((feature, i) => {
-			const {description, name} = feature;
-			return (<RulesSection key={i} headerText={name} children={
-				<Paragraphs paragraphs={description}/>
-			}/>);
-		});
-	};
-
-	return (
-		<RulesSection headerText="Features" children={renderFeatures()}/>
-	);
-
-	// TODO: replace above with this
-	// return features.map((feature, i) => {
-	// 	const {description, name} = feature;
-	// 	return (<RulesSection key={i} headerText={`Feature: ${name}`} children={
-	// 		<Paragraphs paragraphs={description}/>
-	// 	}/>);
-	// });
+	return features.map((feature, i) => {
+		const {description, name} = feature;
+		return (<RulesSection key={i} headerText={`Background Feature: ${name}`} children={
+			<Paragraphs paragraphs={description}/>
+		}/>);
+	});
 }
 
 Features.propTypes = {
