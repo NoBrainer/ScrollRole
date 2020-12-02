@@ -21,7 +21,7 @@ function Description(props) {
 }
 
 Description.propTypes = {
-	description: PropTypes.array,
+	description: PropTypes.arrayOf(PropTypes.string),
 };
 
 export default Description

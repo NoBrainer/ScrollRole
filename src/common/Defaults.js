@@ -5,6 +5,10 @@ export const EXTERNAL_LINK_PROPS = {
 	underline: 'always',
 };
 
+export const LIST_STYLES = {
+	margin: 0,
+	padding: '0 0 0 15px',
+};
 export const PAPER_STYLES = {
 	flex: 1,
 	margin: '0 0 20px 0',

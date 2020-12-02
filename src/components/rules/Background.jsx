@@ -1,10 +1,10 @@
 import {Accordion, AccordionDetails, AccordionSummary, Typography} from "@material-ui/core";
 import {makeStyles} from "@material-ui/core/styles";
 import {ExpandMore} from "@material-ui/icons";
-import {PAPER_STYLES} from "common/Defaults";
 import Description from "components/rules/Description";
 import Equipment from "components/rules/Equipment";
 import Features from "components/rules/Features";
+import Proficiencies from "components/rules/Proficiencies";
 import PropTypes from "prop-types";
 import React from "react";
 
@@ -12,13 +12,12 @@ const useStyles = makeStyles((theme) => ({
 	details: {
 		flexDirection: "column",
 	},
-	paper: PAPER_STYLES,
 }));
 
 function Background(props) {
 	const classes = useStyles();
 	const {background, summaryId} = props;
-	const {description, equipment, features, name} = background;
+	const {description, equipment, features, name, proficiencies} = background;
 
 	//TODO: populate the entire structure
 	console.log(background);
@@ -32,6 +31,7 @@ function Background(props) {
 				<Description description={description}/>
 				<Features features={features}/>
 				<Equipment equipment={equipment}/>
+				<Proficiencies proficiencies={proficiencies}/>
 			</AccordionDetails>
 		</Accordion>
 	);

@@ -37,7 +37,7 @@ function Features(props) {
 }
 
 Features.propTypes = {
-	features: PropTypes.array,
+	features: PropTypes.arrayOf(PropTypes.object),
 };
 
 export default Features
