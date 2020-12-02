@@ -26,7 +26,10 @@ function RulesSection(props) {
 
 RulesSection.propTypes = {
 	headerText: PropTypes.string.isRequired,
-	children: PropTypes.array.isRequired,
+	children: PropTypes.oneOfType([
+		PropTypes.arrayOf(PropTypes.node),
+		PropTypes.node,
+	]).isRequired,
 };
 
 export default RulesSection

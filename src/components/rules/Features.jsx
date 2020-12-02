@@ -11,7 +11,8 @@ function Features(props) {
 
 	const renderParagraphs = (description) => {
 		return description.map((paragraph, i) => {
-			return (<Typography key={i} paragraph={true}>{paragraph}</Typography>);
+			const isLastParagraph = (i === description.length - 1);
+			return (<Typography key={i} paragraph={!isLastParagraph}>{paragraph}</Typography>);
 		});
 	}
 

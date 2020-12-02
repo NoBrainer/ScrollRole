@@ -3,6 +3,7 @@ import {makeStyles} from "@material-ui/core/styles";
 import {ExpandMore} from "@material-ui/icons";
 import {PAPER_STYLES} from "common/Defaults";
 import Description from "components/rules/Description";
+import Equipment from "components/rules/Equipment";
 import Features from "components/rules/Features";
 import PropTypes from "prop-types";
 import React from "react";
@@ -17,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
 function Background(props) {
 	const classes = useStyles();
 	const {background, summaryId} = props;
-	const {description, features, name} = background;
+	const {description, equipment, features, name} = background;
 
 	//TODO: populate the entire structure
 	console.log(background);
@@ -30,6 +31,7 @@ function Background(props) {
 			<AccordionDetails className={classes.details}>
 				<Description description={description}/>
 				<Features features={features}/>
+				<Equipment equipment={equipment}/>
 			</AccordionDetails>
 		</Accordion>
 	);
