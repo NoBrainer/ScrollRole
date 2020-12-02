@@ -1,4 +1,4 @@
-import {Typography} from "@material-ui/core";
+import Paragraphs from "components/rules/Paragraphs";
 import RulesSection from "components/rules/RulesSection";
 import {isEmpty} from "lodash";
 import PropTypes from "prop-types";
@@ -9,14 +9,10 @@ function Description(props) {
 
 	if (isEmpty(description)) return null;
 
-	const renderDescription = () => {
-		return description.map((paragraph, i) => {
-			return (<Typography key={i} paragraph={true}>{paragraph}</Typography>);
-		});
-	};
-
 	return (
-		<RulesSection headerText="Description" children={renderDescription()}/>
+		<RulesSection headerText="Description" children={
+			<Paragraphs paragraphs={description}/>
+		}/>
 	);
 }
 

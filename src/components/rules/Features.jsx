@@ -1,4 +1,4 @@
-import {Typography} from "@material-ui/core";
+import Paragraphs from "components/rules/Paragraphs";
 import RulesSection from "components/rules/RulesSection";
 import {isEmpty} from "lodash";
 import PropTypes from "prop-types";
@@ -9,16 +9,12 @@ function Features(props) {
 
 	if (isEmpty(features)) return null;
 
-	const renderParagraphs = (description) => {
-		return description.map((paragraph, i) => {
-			const isLastParagraph = (i === description.length - 1);
-			return (<Typography key={i} paragraph={!isLastParagraph}>{paragraph}</Typography>);
-		});
-	}
-
 	const renderFeatures = () => {
 		return features.map((feature, i) => {
-			return (<RulesSection key={i} headerText={feature.name} children={renderParagraphs(feature.description)}/>);
+			const {description, name} = feature;
+			return (<RulesSection key={i} headerText={name} children={
+				<Paragraphs paragraphs={description}/>
+			}/>);
 		});
 	};
 
@@ -27,17 +23,22 @@ function Features(props) {
 	);
 
 	// TODO: replace above with this
-	// const renderFeatures = () => {
-	// 	return features.map((feature, i) => {
-	// 		return (<RulesSection key={i} headerText={`Feature: ${feature.name}`} children={renderParagraphs(feature.description)}/>);
-	// 	});
-	// };
-	//
-	// return renderFeatures();
+	// return features.map((feature, i) => {
+	// 	const {description, name} = feature;
+	// 	return (<RulesSection key={i} headerText={`Feature: ${name}`} children={
+	// 		<Paragraphs paragraphs={description}/>
+	// 	}/>);
+	// });
 }
 
 Features.propTypes = {
-	features: PropTypes.arrayOf(PropTypes.object),
+	features: PropTypes.arrayOf(
+		PropTypes.shape({
+			description: PropTypes.arrayOf(PropTypes.string),
+			name: PropTypes.string.isRequired,
+			shortDescription: PropTypes.string,
+		})
+	),
 };
 
 export default Features

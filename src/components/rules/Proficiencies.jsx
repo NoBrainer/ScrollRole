@@ -30,7 +30,12 @@ function Proficiencies(props) {
 }
 
 Proficiencies.propTypes = {
-	proficiencies: PropTypes.arrayOf(PropTypes.object),
+	proficiencies: PropTypes.arrayOf(
+		PropTypes.shape({
+			name: PropTypes.string.isRequired,
+			type: PropTypes.string.isRequired,
+		})
+	),
 };
 
 export default Proficiencies
