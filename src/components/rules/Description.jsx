@@ -6,7 +6,6 @@ import React from "react";
 
 function Description(props) {
 	const {description} = props;
-
 	if (isEmpty(description)) return null;
 
 	return (

@@ -10,19 +10,27 @@ const useStyles = makeStyles((theme) => ({
 
 function BasicList(props) {
 	const classes = useStyles();
-	const {items} = props;
-
+	const {items, ordered} = props;
 	if (isEmpty(items)) return null;
 
-	return (<ul className={classes.list}>
-		{items.map((item, i) => {
-			return (<li key={i}>{item}</li>);
-		})}
-	</ul>);
+	if (ordered) {
+		return (<ol className={classes.list}>
+			{items.map((item, i) => {
+				return (<li key={i}>{item}</li>);
+			})}
+		</ol>);
+	} else {
+		return (<ul className={classes.list}>
+			{items.map((item, i) => {
+				return (<li key={i}>{item}</li>);
+			})}
+		</ul>);
+	}
 }
 
 BasicList.propTypes = {
 	items: PropTypes.arrayOf(PropTypes.string),
+	ordered: PropTypes.bool,
 };
 
 export default BasicList

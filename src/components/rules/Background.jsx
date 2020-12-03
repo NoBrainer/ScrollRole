@@ -5,6 +5,7 @@ import Description from "components/rules/Description";
 import Equipment from "components/rules/Equipment";
 import Features from "components/rules/Features";
 import Proficiencies from "components/rules/Proficiencies";
+import SuggestedCharacteristics from "components/rules/SuggestedCharacteristics";
 import PropTypes from "prop-types";
 import React from "react";
 
@@ -17,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
 function Background(props) {
 	const classes = useStyles();
 	const {background, summaryId} = props;
-	const {description, equipment, features, name, proficiencies} = background;
+	const {description, equipment, features, name, proficiencies, suggestedCharacteristics} = background;
 
 	//TODO: populate the entire structure
 	console.log(background);
@@ -30,6 +31,7 @@ function Background(props) {
 			<AccordionDetails className={classes.details}>
 				<Description description={description}/>
 				<Features features={features}/>
+				<SuggestedCharacteristics suggestedCharacteristics={suggestedCharacteristics}/>
 				<Equipment equipment={equipment}/>
 				<Proficiencies proficiencies={proficiencies}/>
 			</AccordionDetails>

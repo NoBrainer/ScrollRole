@@ -5,7 +5,6 @@ import React from "react";
 
 function Paragraphs(props) {
 	const {paragraphs} = props;
-
 	if (isEmpty(paragraphs)) return null;
 
 	return paragraphs.map((paragraph, i) => {

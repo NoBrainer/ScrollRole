@@ -6,7 +6,6 @@ import React from "react";
 
 function Proficiencies(props) {
 	const {proficiencies} = props;
-
 	if (isEmpty(proficiencies)) return null;
 
 	const displayStrings = () => {

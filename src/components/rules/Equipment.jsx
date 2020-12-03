@@ -6,7 +6,6 @@ import React from "react";
 
 function Equipment(props) {
 	const {equipment} = props;
-
 	if (isEmpty(equipment)) return null;
 
 	return (

@@ -6,7 +6,6 @@ import React from "react";
 
 function Features(props) {
 	const {features} = props;
-
 	if (isEmpty(features)) return null;
 
 	return features.map((feature, i) => {
