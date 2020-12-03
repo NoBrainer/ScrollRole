@@ -16,14 +16,14 @@ function Features(props) {
 	});
 }
 
+export const FeaturePropType = PropTypes.shape({
+	description: PropTypes.arrayOf(PropTypes.string),
+	name: PropTypes.string.isRequired,
+	shortDescription: PropTypes.string,
+});
+
 Features.propTypes = {
-	features: PropTypes.arrayOf(
-		PropTypes.shape({
-			description: PropTypes.arrayOf(PropTypes.string),
-			name: PropTypes.string.isRequired,
-			shortDescription: PropTypes.string,
-		})
-	),
+	features: PropTypes.arrayOf(FeaturePropType),
 };
 
 export default Features

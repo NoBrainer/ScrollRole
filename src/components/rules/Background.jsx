@@ -1,6 +1,7 @@
 import {Accordion, AccordionDetails, AccordionSummary, Typography} from "@material-ui/core";
 import {makeStyles} from "@material-ui/core/styles";
 import {ExpandMore} from "@material-ui/icons";
+import Choices from "components/rules/Choices";
 import Description from "components/rules/Description";
 import Equipment from "components/rules/Equipment";
 import Features from "components/rules/Features";
@@ -18,9 +19,8 @@ const useStyles = makeStyles((theme) => ({
 function Background(props) {
 	const classes = useStyles();
 	const {background, summaryId} = props;
-	const {description, equipment, features, name, proficiencies, suggestedCharacteristics} = background;
+	const {choices, description, equipment, features, name, proficiencies, suggestedCharacteristics} = background;
 
-	//TODO: populate the entire structure
 	console.log(background);
 
 	return (
@@ -34,6 +34,7 @@ function Background(props) {
 				<SuggestedCharacteristics suggestedCharacteristics={suggestedCharacteristics}/>
 				<Equipment equipment={equipment}/>
 				<Proficiencies proficiencies={proficiencies}/>
+				<Choices choices={choices}/>
 			</AccordionDetails>
 		</Accordion>
 	);

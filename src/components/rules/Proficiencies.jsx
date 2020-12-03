@@ -22,13 +22,13 @@ function Proficiencies(props) {
 	);
 }
 
+export const ProficiencyPropType = PropTypes.shape({
+	name: PropTypes.string.isRequired,
+	type: PropTypes.string.isRequired,
+});
+
 Proficiencies.propTypes = {
-	proficiencies: PropTypes.arrayOf(
-		PropTypes.shape({
-			name: PropTypes.string.isRequired,
-			type: PropTypes.string.isRequired,
-		})
-	),
+	proficiencies: PropTypes.arrayOf(ProficiencyPropType),
 };
 
 export default Proficiencies
