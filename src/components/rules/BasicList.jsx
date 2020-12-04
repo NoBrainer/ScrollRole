@@ -13,18 +13,12 @@ function BasicList(props) {
 	const {items, ordered} = props;
 	if (isEmpty(items)) return null;
 
+	const renderItems = () => items.map((item, i) => (<li key={i}>{item}</li>));
+
 	if (ordered) {
-		return (<ol className={classes.list}>
-			{items.map((item, i) => {
-				return (<li key={i}>{item}</li>);
-			})}
-		</ol>);
+		return (<ol className={classes.list} children={renderItems()}/>);
 	} else {
-		return (<ul className={classes.list}>
-			{items.map((item, i) => {
-				return (<li key={i}>{item}</li>);
-			})}
-		</ul>);
+		return (<ul className={classes.list} children={renderItems()}/>);
 	}
 }
 

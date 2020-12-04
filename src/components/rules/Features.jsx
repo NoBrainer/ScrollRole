@@ -10,9 +10,11 @@ function Features(props) {
 
 	return features.map((feature, i) => {
 		const {description, name} = feature;
-		return (<RulesSection key={i} headerText={`Background Feature: ${name}`} children={
-			<Paragraphs paragraphs={description}/>
-		}/>);
+		return (
+			<RulesSection key={i} headerText={`Background Feature: ${name}`}>
+				<Paragraphs paragraphs={description}/>
+			</RulesSection>
+		);
 	});
 }
 

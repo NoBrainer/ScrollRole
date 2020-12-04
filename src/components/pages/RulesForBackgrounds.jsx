@@ -1,13 +1,13 @@
-import {Container, Grid, Paper, Typography} from "@material-ui/core";
+import {Grid, Paper, Typography} from "@material-ui/core";
 import {makeStyles} from "@material-ui/core/styles";
-import {MARGIN_RIGHT_STYLES, PAPER_STYLES} from "common/Defaults";
+import {PAPER_STYLES} from "common/Defaults";
 import Background from "components/rules/Background";
+import BasicWrapper from "components/rules/BasicWrapper";
 import React from "react";
 import {useSelector} from "react-redux";
 
 const useStyles = makeStyles((theme) => ({
 	paper: PAPER_STYLES,
-	wrapper: MARGIN_RIGHT_STYLES,
 }));
 
 function RulesForBackgrounds() {
@@ -34,9 +34,9 @@ function RulesForBackgrounds() {
 			<Paper className={classes.paper}>
 				<Typography component="h1" variant="h4" display="block">Backgrounds</Typography>
 			</Paper>
-			<Container className={classes.wrapper}>
+			<BasicWrapper margin="bottom">
 				{renderBackgrounds()}
-			</Container>
+			</BasicWrapper>
 		</Grid>
 	);
 }

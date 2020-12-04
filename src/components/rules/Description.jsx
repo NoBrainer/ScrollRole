@@ -9,9 +9,9 @@ function Description(props) {
 	if (isEmpty(description)) return null;
 
 	return (
-		<RulesSection headerText="Description" children={
+		<RulesSection headerText="Description">
 			<Paragraphs paragraphs={description}/>
-		}/>
+		</RulesSection>
 	);
 }
 

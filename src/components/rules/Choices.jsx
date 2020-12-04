@@ -1,8 +1,7 @@
 import {Typography} from "@material-ui/core";
-import {makeStyles} from "@material-ui/core/styles";
-import {MARGIN_LEFT_STYLES} from "common/Defaults";
 import {AbilityScoreAdjustmentPropType} from "components/rules/AbilityScoreAdjustment";
 import BasicList from "components/rules/BasicList";
+import BasicWrapper from "components/rules/BasicWrapper";
 import {FeaturePropType} from "components/rules/Features";
 import Paragraphs from "components/rules/Paragraphs";
 import {ProficiencyPropType} from "components/rules/Proficiencies";
@@ -11,12 +10,7 @@ import {isEmpty} from "lodash";
 import PropTypes from "prop-types";
 import React from "react";
 
-const useStyles = makeStyles((theme) => ({
-	marginLeft: MARGIN_LEFT_STYLES,
-}));
-
 function Choices(props) {
-	const classes = useStyles();
 	const {choices} = props;
 	if (isEmpty(choices)) return null;
 
@@ -41,11 +35,11 @@ function Choices(props) {
 		return ["currently", "in progress"];
 	};
 
-	return (<RulesSection headerText="Choices" children={
-		<div className={classes.marginLeft}>
-			{choices.map(renderChoice)}
-		</div>
-	}/>);
+	return (
+		<RulesSection headerText="Choices">
+			<BasicWrapper margin="left" children={choices.map(renderChoice)}/>
+		</RulesSection>
+	);
 }
 
 Choices.propTypes = {

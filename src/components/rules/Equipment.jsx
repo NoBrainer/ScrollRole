@@ -9,9 +9,9 @@ function Equipment(props) {
 	if (isEmpty(equipment)) return null;
 
 	return (
-		<RulesSection headerText="Starting Equipment" children={
+		<RulesSection headerText="Starting Equipment">
 			<BasicList items={equipment}/>
-		}/>
+		</RulesSection>
 	);
 }
 

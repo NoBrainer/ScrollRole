@@ -16,9 +16,9 @@ function Proficiencies(props) {
 	};
 
 	return (
-		<RulesSection headerText="Proficiencies" children={
+		<RulesSection headerText="Proficiencies">
 			<BasicList items={displayStrings()}/>
-		}/>
+		</RulesSection>
 	);
 }
 
