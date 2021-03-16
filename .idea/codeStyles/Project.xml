@@ -5,9 +5,9 @@
       <option name="BLANK_LINES_BETWEEN_BLOCKS" value="0" />
       <option name="KEEP_SINGLE_LINE_BLOCKS" value="true" />
     </CssCodeStyleSettings>
-    <DB2CodeStyleSettings version="1">
-      <option name="myVersion" value="1" />
-      <option name="KEYWORD_CASE" value="0" />
+    <DB2CodeStyleSettings version="5">
+      <option name="USE_GENERAL_STYLE" value="false" />
+      <option name="KEYWORD_CASE" value="2" />
       <option name="TABLE_OPENING" value="1" />
       <option name="TABLE_CONTENT" value="2" />
       <option name="TABLE_CLOSING" value="3" />
@@ -15,9 +15,9 @@
       <option name="IMP_DECLARE_EL_WRAP" value="1" />
       <option name="IMP_IF_THEN_WRAP_THEN" value="true" />
     </DB2CodeStyleSettings>
-    <DerbyCodeStyleSettings version="1">
-      <option name="myVersion" value="1" />
-      <option name="KEYWORD_CASE" value="0" />
+    <DerbyCodeStyleSettings version="5">
+      <option name="USE_GENERAL_STYLE" value="false" />
+      <option name="KEYWORD_CASE" value="2" />
       <option name="TABLE_OPENING" value="1" />
       <option name="TABLE_CONTENT" value="2" />
       <option name="TABLE_CLOSING" value="3" />
@@ -25,9 +25,9 @@
       <option name="IMP_DECLARE_EL_WRAP" value="1" />
       <option name="IMP_IF_THEN_WRAP_THEN" value="true" />
     </DerbyCodeStyleSettings>
-    <H2CodeStyleSettings version="1">
-      <option name="myVersion" value="1" />
-      <option name="KEYWORD_CASE" value="0" />
+    <H2CodeStyleSettings version="5">
+      <option name="USE_GENERAL_STYLE" value="false" />
+      <option name="KEYWORD_CASE" value="2" />
       <option name="TABLE_OPENING" value="1" />
       <option name="TABLE_CONTENT" value="2" />
       <option name="TABLE_CLOSING" value="3" />
@@ -35,9 +35,9 @@
       <option name="IMP_DECLARE_EL_WRAP" value="1" />
       <option name="IMP_IF_THEN_WRAP_THEN" value="true" />
     </H2CodeStyleSettings>
-    <HSQLCodeStyleSettings version="1">
-      <option name="myVersion" value="1" />
-      <option name="KEYWORD_CASE" value="0" />
+    <HSQLCodeStyleSettings version="5">
+      <option name="USE_GENERAL_STYLE" value="false" />
+      <option name="KEYWORD_CASE" value="2" />
       <option name="TABLE_OPENING" value="1" />
       <option name="TABLE_CONTENT" value="2" />
       <option name="TABLE_CLOSING" value="3" />
@@ -56,27 +56,9 @@
       <option name="BLANK_LINES_AROUND_FUNCTION" value="0" />
       <option name="IMPORT_SORT_MODULE_NAME" value="true" />
     </JSCodeStyleSettings>
-    <JetCodeStyleSettings>
-      <option name="PACKAGES_TO_USE_STAR_IMPORTS">
-        <value>
-          <package name="java.util" alias="false" withSubpackages="false" />
-          <package name="kotlinx.android.synthetic" alias="false" withSubpackages="true" />
-          <package name="io.ktor" alias="false" withSubpackages="true" />
-        </value>
-      </option>
-      <option name="PACKAGES_IMPORT_LAYOUT">
-        <value>
-          <package name="" alias="false" withSubpackages="true" />
-          <package name="java" alias="false" withSubpackages="true" />
-          <package name="javax" alias="false" withSubpackages="true" />
-          <package name="kotlin" alias="false" withSubpackages="true" />
-          <package name="" alias="true" withSubpackages="true" />
-        </value>
-      </option>
-    </JetCodeStyleSettings>
-    <MSSQLCodeStyleSettings version="1">
-      <option name="myVersion" value="1" />
-      <option name="KEYWORD_CASE" value="0" />
+    <MSSQLCodeStyleSettings version="5">
+      <option name="USE_GENERAL_STYLE" value="false" />
+      <option name="KEYWORD_CASE" value="2" />
       <option name="TABLE_OPENING" value="1" />
       <option name="TABLE_CONTENT" value="2" />
       <option name="TABLE_CLOSING" value="3" />
@@ -84,9 +66,9 @@
       <option name="IMP_DECLARE_EL_WRAP" value="1" />
       <option name="IMP_IF_THEN_WRAP_THEN" value="true" />
     </MSSQLCodeStyleSettings>
-    <MySQLCodeStyleSettings version="1">
-      <option name="myVersion" value="1" />
-      <option name="KEYWORD_CASE" value="0" />
+    <MySQLCodeStyleSettings version="5">
+      <option name="USE_GENERAL_STYLE" value="false" />
+      <option name="KEYWORD_CASE" value="2" />
       <option name="TABLE_OPENING" value="1" />
       <option name="TABLE_CONTENT" value="2" />
       <option name="TABLE_CLOSING" value="3" />
@@ -94,9 +76,9 @@
       <option name="IMP_DECLARE_EL_WRAP" value="1" />
       <option name="IMP_IF_THEN_WRAP_THEN" value="true" />
     </MySQLCodeStyleSettings>
-    <OracleCodeStyleSettings version="1">
-      <option name="myVersion" value="1" />
-      <option name="KEYWORD_CASE" value="0" />
+    <OracleCodeStyleSettings version="5">
+      <option name="USE_GENERAL_STYLE" value="false" />
+      <option name="KEYWORD_CASE" value="2" />
       <option name="TABLE_OPENING" value="1" />
       <option name="TABLE_CONTENT" value="2" />
       <option name="TABLE_CLOSING" value="3" />
@@ -115,9 +97,9 @@
       <option name="KEEP_BLANK_LINES_AFTER_LBRACE" value="1" />
       <option name="FORCE_SHORT_DECLARATION_ARRAY_STYLE" value="true" />
     </PHPCodeStyleSettings>
-    <PostgresCodeStyleSettings version="1">
-      <option name="myVersion" value="1" />
-      <option name="KEYWORD_CASE" value="0" />
+    <PostgresCodeStyleSettings version="5">
+      <option name="USE_GENERAL_STYLE" value="false" />
+      <option name="KEYWORD_CASE" value="2" />
       <option name="TABLE_OPENING" value="1" />
       <option name="TABLE_CONTENT" value="2" />
       <option name="TABLE_CLOSING" value="3" />
@@ -125,9 +107,9 @@
       <option name="IMP_DECLARE_EL_WRAP" value="1" />
       <option name="IMP_IF_THEN_WRAP_THEN" value="true" />
     </PostgresCodeStyleSettings>
-    <SQLiteCodeStyleSettings version="1">
-      <option name="myVersion" value="1" />
-      <option name="KEYWORD_CASE" value="0" />
+    <SQLiteCodeStyleSettings version="5">
+      <option name="USE_GENERAL_STYLE" value="false" />
+      <option name="KEYWORD_CASE" value="2" />
       <option name="TABLE_OPENING" value="1" />
       <option name="TABLE_CONTENT" value="2" />
       <option name="TABLE_CLOSING" value="3" />
@@ -135,9 +117,8 @@
       <option name="IMP_DECLARE_EL_WRAP" value="1" />
       <option name="IMP_IF_THEN_WRAP_THEN" value="true" />
     </SQLiteCodeStyleSettings>
-    <SqlCodeStyleSettings version="1">
-      <option name="myVersion" value="1" />
-      <option name="KEYWORD_CASE" value="0" />
+    <SqlCodeStyleSettings version="5">
+      <option name="KEYWORD_CASE" value="2" />
       <option name="TABLE_OPENING" value="1" />
       <option name="TABLE_CONTENT" value="2" />
       <option name="TABLE_CLOSING" value="3" />
@@ -145,9 +126,9 @@
       <option name="IMP_DECLARE_EL_WRAP" value="1" />
       <option name="IMP_IF_THEN_WRAP_THEN" value="true" />
     </SqlCodeStyleSettings>
-    <SybaseCodeStyleSettings version="1">
-      <option name="myVersion" value="1" />
-      <option name="KEYWORD_CASE" value="0" />
+    <SybaseCodeStyleSettings version="5">
+      <option name="USE_GENERAL_STYLE" value="false" />
+      <option name="KEYWORD_CASE" value="2" />
       <option name="TABLE_OPENING" value="1" />
       <option name="TABLE_CONTENT" value="2" />
       <option name="TABLE_CLOSING" value="3" />
@@ -155,11 +136,6 @@
       <option name="IMP_DECLARE_EL_WRAP" value="1" />
       <option name="IMP_IF_THEN_WRAP_THEN" value="true" />
     </SybaseCodeStyleSettings>
-    <codeStyleSettings language="CSS">
-      <indentOptions>
-        <option name="USE_TAB_CHARACTER" value="true" />
-      </indentOptions>
-    </codeStyleSettings>
     <codeStyleSettings language="HTML">
       <indentOptions>
         <option name="USE_TAB_CHARACTER" value="true" />
