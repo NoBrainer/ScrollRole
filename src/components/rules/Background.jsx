@@ -21,8 +21,6 @@ function Background(props) {
 	const {background, summaryId} = props;
 	const {choices, description, equipment, features, name, proficiencies, suggestedCharacteristics} = background;
 
-	console.log(background);
-
 	return (
 		<Accordion>
 			<AccordionSummary expandIcon={<ExpandMore/>} aria-controls="background-panel-content" id={summaryId}>

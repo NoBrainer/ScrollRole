@@ -18,7 +18,6 @@ function Choices(props) {
 	if (isEmpty(choices)) return null;
 	const currentRules = rulesList.length > 0 ? rulesList[0] : {};
 	const lists = currentRules.lists;
-	console.log(lists);
 
 	const renderChoice = (choice, i) => {
 		const {name, description, type, pick, options, from, allowDuplicates} = choice;
@@ -30,42 +29,40 @@ function Choices(props) {
 			return null;
 		}
 		const items = generateItems(choice);
-		console.log(items);
 		return (<div key={i}>
 			<Typography component="h4" variant="h6">{name}</Typography>
 			<Paragraphs paragraphs={description}/>
 			<Typography>Type: {type}</Typography>
 			{allowDuplicates && <Typography>Allow Duplicates: yes</Typography>}
 			<Typography>Pick: {pick}</Typography>
-			<ChoiceList items={[`TODO: Generate items for [${name}]`]}/>
+			<ChoiceList items={items}/>
 		</div>);
 	};
 
 	const generateItems = (choice) => {
 		//TODO: support allowDuplicate
 		//TODO: support use
-		const {type, options, from, allowDuplicate, use} = choice;
+		const {options, from} = choice; //unused: type, allowDuplicate, use
 		let items = options;
-		if (!items || isEmpty(items)) {
-			const {name, levels, types} = from;
-			const filterByType = (item) => includes(types, item.type);
-			const filterByLevel = (item) => includes(levels, item.level);
-			if (isObject(from)) {
-				const list = lists[name];
-				if (!isEmpty(types) && !isEmpty(levels)) {
-					items = chain(list).filter(filterByType).filter(filterByLevel).value();
-				} else if (!isEmpty(types)) {
-					items = chain(list).filter(filterByType).value();
-				} else if (!isEmpty(levels)) {
-					items = chain(list).filter(filterByLevel).value();
-				} else {
-					items = list;
-				}
+		if (items && !isEmpty(items)) return items;
+
+		const {name, levels, types} = from;
+		const filterByType = (item) => includes(types, item.type);
+		const filterByLevel = (item) => includes(levels, item.level);
+		if (isObject(from)) {
+			const list = lists[name];
+			if (!isEmpty(types) && !isEmpty(levels)) {
+				items = chain(list).filter(filterByType).filter(filterByLevel).value();
+			} else if (!isEmpty(types)) {
+				items = chain(list).filter(filterByType).value();
+			} else if (!isEmpty(levels)) {
+				items = chain(list).filter(filterByLevel).value();
 			} else {
-				console.log(`Unable to determine items for 'choice' attribute`);
-				items = [];
+				items = list;
 			}
-			return items;
+		} else {
+			console.log(`Unable to determine items for 'choice' attribute`);
+			items = [];
 		}
 		return items;
 	};

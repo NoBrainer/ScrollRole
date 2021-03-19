@@ -13,7 +13,12 @@ function ChoiceList(props) {
 	const {items, ordered} = props;
 	if (isEmpty(items)) return null;
 
-	const renderItems = () => items.map((item, i) => (<li key={i}>{item}</li>));
+	const renderItem = (item, i) => {
+		const {name, type} = item;
+		const text = type ? `${type}: ${name}` : name;
+		return (<li key={i}>{text}</li>)
+	};
+	const renderItems = () => items.map((item, i) => renderItem(item, i));
 
 	if (ordered) {
 		return (<ol className={classes.list} children={renderItems()}/>);
@@ -23,7 +28,10 @@ function ChoiceList(props) {
 }
 
 ChoiceList.propTypes = {
-	items: PropTypes.arrayOf(PropTypes.string),
+	items: PropTypes.arrayOf(PropTypes.shape({
+		name: PropTypes.string.isRequired,
+		type: PropTypes.string,
+	})).isRequired,
 	ordered: PropTypes.bool,
 };
 
