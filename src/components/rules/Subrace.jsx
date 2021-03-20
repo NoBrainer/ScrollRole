@@ -1,12 +1,12 @@
 import {Accordion, AccordionDetails, AccordionSummary, Typography} from "@material-ui/core";
 import {makeStyles} from "@material-ui/core/styles";
 import {ExpandMore} from "@material-ui/icons";
-import AbilityScoreAdjustment from "components/rules/AbilityScoreAdjustment";
-import Choices from "components/rules/Choices";
-import Description from "components/rules/Description";
+import AbilityScoreAdjustments, {AbilityScoreAdjustmentsPropType} from "components/rules/AbilityScoreAdjustments";
+import Choices, {ChoicesPropType} from "components/rules/Choices";
+import Description, {DescriptionPropType} from "components/rules/Description";
 import Equipment from "components/rules/Equipment";
-import Features from "components/rules/Features";
-import Proficiencies from "components/rules/Proficiencies";
+import Features, {FeaturesPropType} from "components/rules/Features";
+import Proficiencies, {ProficienciesPropType} from "components/rules/Proficiencies";
 import SuggestedCharacteristics from "components/rules/SuggestedCharacteristics";
 import PropTypes from "prop-types";
 import React from "react";
@@ -32,7 +32,7 @@ function Subrace(props) {
 			</AccordionSummary>
 			<AccordionDetails className={classes.details}>
 				<Description description={description}/>
-				<AbilityScoreAdjustment abilityScoreAdjustments={abilityScoreAdjustments}/>
+				<AbilityScoreAdjustments abilityScoreAdjustments={abilityScoreAdjustments}/>
 				<Description titleOverride={"Age"} description={[age]}/>
 				<Description titleOverride={"Alignment"} description={[alignment]}/>
 				<Description titleOverride={"Size"} description={[size]}/>
@@ -47,8 +47,17 @@ function Subrace(props) {
 	);
 }
 
+export const SubracePropType = PropTypes.shape({
+	name: PropTypes.string.isRequired,
+	description: DescriptionPropType,
+	abilityScoreAdjustments: AbilityScoreAdjustmentsPropType,
+	features: FeaturesPropType,
+	proficiencies: ProficienciesPropType,
+	choices: ChoicesPropType,
+});
+
 Subrace.propTypes = {
-	subrace: PropTypes.object.isRequired,
+	subrace: SubracePropType,
 	summaryId: PropTypes.string.isRequired,
 };
 

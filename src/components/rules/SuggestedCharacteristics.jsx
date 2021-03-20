@@ -36,14 +36,16 @@ function SuggestedCharacteristics(props) {
 	);
 }
 
+export const SuggestedCharacteristicsPropType = PropTypes.shape({
+	bonds: PropTypes.arrayOf(PropTypes.string).isRequired,
+	description: PropTypes.arrayOf(PropTypes.string).isRequired,
+	flaws: PropTypes.arrayOf(PropTypes.string).isRequired,
+	ideals: PropTypes.arrayOf(PropTypes.string).isRequired,
+	personalityTraits: PropTypes.arrayOf(PropTypes.string).isRequired,
+});
+
 SuggestedCharacteristics.propTypes = {
-	suggestedCharacteristics: PropTypes.shape({
-		bonds: PropTypes.arrayOf(PropTypes.string).isRequired,
-		description: PropTypes.arrayOf(PropTypes.string).isRequired,
-		flaws: PropTypes.arrayOf(PropTypes.string).isRequired,
-		ideals: PropTypes.arrayOf(PropTypes.string).isRequired,
-		personalityTraits: PropTypes.arrayOf(PropTypes.string).isRequired,
-	}),
+	suggestedCharacteristics: SuggestedCharacteristicsPropType,
 };
 
 export default SuggestedCharacteristics

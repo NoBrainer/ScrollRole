@@ -8,16 +8,14 @@ function Proficiencies(props) {
 	const {proficiencies} = props;
 	if (isEmpty(proficiencies)) return null;
 
-	const displayStrings = () => {
-		return proficiencies.map((proficiency) => {
-			const {name, type} = proficiency;
-			return `${name} (${type})`;
-		});
+	const renderProficiency = (proficiency) => {
+		const {name, type} = proficiency;
+		return `${type}: ${name}`;
 	};
 
 	return (
 		<RulesSection headerText="Proficiencies">
-			<BasicList items={displayStrings()}/>
+			<BasicList items={proficiencies.map(renderProficiency)}/>
 		</RulesSection>
 	);
 }
@@ -27,8 +25,10 @@ export const ProficiencyPropType = PropTypes.shape({
 	type: PropTypes.string.isRequired,
 });
 
+export const ProficienciesPropType = PropTypes.arrayOf(ProficiencyPropType);
+
 Proficiencies.propTypes = {
-	proficiencies: PropTypes.arrayOf(ProficiencyPropType),
+	proficiencies: ProficienciesPropType,
 };
 
 export default Proficiencies

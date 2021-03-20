@@ -1,12 +1,12 @@
 import {Accordion, AccordionDetails, AccordionSummary, Typography} from "@material-ui/core";
 import {makeStyles} from "@material-ui/core/styles";
 import {ExpandMore} from "@material-ui/icons";
-import Choices from "components/rules/Choices";
+import Choices, {ChoicesPropType} from "components/rules/Choices";
 import Description from "components/rules/Description";
-import Equipment from "components/rules/Equipment";
-import Features from "components/rules/Features";
-import Proficiencies from "components/rules/Proficiencies";
-import SuggestedCharacteristics from "components/rules/SuggestedCharacteristics";
+import Equipment, {EquipmentPropType} from "components/rules/Equipment";
+import Features, {FeaturesPropType} from "components/rules/Features";
+import Proficiencies, {ProficiencyPropType} from "components/rules/Proficiencies";
+import SuggestedCharacteristics, {SuggestedCharacteristicsPropType} from "components/rules/SuggestedCharacteristics";
 import PropTypes from "prop-types";
 import React from "react";
 
@@ -38,8 +38,18 @@ function Background(props) {
 	);
 }
 
+export const BackgroundPropType = PropTypes.shape({
+	name: PropTypes.string.isRequired,
+	description: PropTypes.arrayOf(PropTypes.string),
+	features: FeaturesPropType,
+	suggestedCharacteristics: SuggestedCharacteristicsPropType,
+	equipment: PropTypes.arrayOf(EquipmentPropType),
+	proficiencies: PropTypes.arrayOf(ProficiencyPropType),
+	choices: ChoicesPropType,
+});
+
 Background.propTypes = {
-	background: PropTypes.object.isRequired,
+	background: BackgroundPropType.isRequired,
 	summaryId: PropTypes.string.isRequired,
 };
 

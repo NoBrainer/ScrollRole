@@ -15,8 +15,10 @@ function Description(props) {
 	);
 }
 
+export const DescriptionPropType = PropTypes.arrayOf(PropTypes.string);
+
 Description.propTypes = {
-	description: PropTypes.arrayOf(PropTypes.string),
+	description: DescriptionPropType,
 	titleOverride: PropTypes.string,
 };
 

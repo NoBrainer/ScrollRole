@@ -1,6 +1,6 @@
-import Paragraphs from "components/rules/Paragraphs";
-import RulesSection from "components/rules/RulesSection";
-import {isEmpty} from "lodash";
+import BasicWrapper from "components/rules/BasicWrapper";
+import Feature, {FeaturePropType} from "components/rules/Feature";
+import {extendWith, isEmpty} from "lodash";
 import PropTypes from "prop-types";
 import React from "react";
 
@@ -8,24 +8,17 @@ function Features(props) {
 	const {features} = props;
 	if (isEmpty(features)) return null;
 
-	return features.map((feature, i) => {
-		const {description, name} = feature;
-		return (
-			<RulesSection key={i} headerText={`Background Feature: ${name}`}>
-				<Paragraphs paragraphs={description}/>
-			</RulesSection>
-		);
-	});
+	return (
+		<BasicWrapper children={features.map((feature, i) => {
+			return Feature(extendWith(feature, {key: `feature-${i}`}));
+		})}/>
+	);
 }
 
-export const FeaturePropType = PropTypes.shape({
-	description: PropTypes.arrayOf(PropTypes.string),
-	name: PropTypes.string.isRequired,
-	shortDescription: PropTypes.string,
-});
+export const FeaturesPropType = PropTypes.arrayOf(FeaturePropType);
 
 Features.propTypes = {
-	features: PropTypes.arrayOf(FeaturePropType),
+	features: FeaturesPropType,
 };
 
 export default Features

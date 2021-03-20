@@ -15,8 +15,10 @@ function Equipment(props) {
 	);
 }
 
+export const EquipmentPropType = PropTypes.string;
+
 Equipment.propTypes = {
-	equipment: PropTypes.arrayOf(PropTypes.string),
+	equipment: PropTypes.arrayOf(EquipmentPropType),
 };
 
 export default Equipment
