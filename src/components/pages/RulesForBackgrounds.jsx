@@ -21,12 +21,12 @@ function RulesForBackgrounds() {
 		return currentBackgrounds.map(renderBackground);
 	};
 
-	const renderLoadingPlaceholder = () => {
-		return (<Paper className={classes.paper}>[Loading...]</Paper>);
-	};
-
 	const renderBackground = (background, i) => {
 		return (<Background key={i} background={background} summaryId={`background-panel-header-${i}`}/>);
+	};
+
+	const renderLoadingPlaceholder = () => {
+		return (<Paper className={classes.paper}>[Loading...]</Paper>);
 	};
 
 	return (

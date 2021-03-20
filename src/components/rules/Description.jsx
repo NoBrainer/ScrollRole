@@ -5,11 +5,11 @@ import PropTypes from "prop-types";
 import React from "react";
 
 function Description(props) {
-	const {description} = props;
+	const {description, titleOverride} = props;
 	if (isEmpty(description)) return null;
 
 	return (
-		<RulesSection headerText="Description">
+		<RulesSection headerText={titleOverride || "Description"}>
 			<Paragraphs paragraphs={description}/>
 		</RulesSection>
 	);
@@ -17,6 +17,7 @@ function Description(props) {
 
 Description.propTypes = {
 	description: PropTypes.arrayOf(PropTypes.string),
+	titleOverride: PropTypes.string,
 };
 
 export default Description
