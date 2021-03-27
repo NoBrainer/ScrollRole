@@ -2,6 +2,7 @@ import {Accordion, AccordionDetails, AccordionSummary, Typography} from "@materi
 import {makeStyles} from "@material-ui/core/styles";
 import {ExpandMore} from "@material-ui/icons";
 import AbilityScoreAdjustments, {AbilityScoreAdjustmentsPropType} from "components/rules/AbilityScoreAdjustments";
+import Choices, {ChoicesPropType} from "components/rules/Choices";
 import Description, {DescriptionPropType} from "components/rules/Description";
 import Equipment from "components/rules/Equipment";
 import Features, {FeaturesPropType} from "components/rules/Features";
@@ -24,9 +25,6 @@ function Race(props) {
 		suggestedCharacteristics
 	} = race;
 
-	console.log(`- Race [${name}]`);
-	console.log(choices);
-
 	return (
 		<Accordion>
 			<AccordionSummary expandIcon={<ExpandMore/>} aria-controls="race-panel-content" id={summaryId}>
@@ -40,7 +38,7 @@ function Race(props) {
 				<SuggestedCharacteristics suggestedCharacteristics={suggestedCharacteristics}/>
 				<Equipment equipment={equipment}/>
 				<Proficiencies proficiencies={proficiencies}/>
-				{/*<Choices choices={choices}/>*/}
+				<Choices choices={choices}/>
 				{/*<Subrace subrace={} summaryId={}*/}
 			</AccordionDetails>
 		</Accordion>
@@ -54,7 +52,7 @@ export const RacePropType = PropTypes.shape({
 	speed: PropTypes.number,
 	features: FeaturesPropType,
 	proficiencies: ProficienciesPropType,
-	// choices: ChoicesPropType,
+	choices: ChoicesPropType,
 	// subraces: PropTypes.arrayOf(SubracePropType),
 });
 

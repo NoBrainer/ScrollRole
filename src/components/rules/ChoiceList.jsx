@@ -1,5 +1,8 @@
 import {makeStyles} from "@material-ui/core/styles";
 import {LIST_STYLES} from "common/Defaults";
+import {AbilityScoreAdjustmentsPropType} from "components/rules/AbilityScoreAdjustments";
+import {FeaturesPropType} from "components/rules/Features";
+import {ProficienciesPropType} from "components/rules/Proficiencies";
 import {isEmpty} from "lodash";
 import PropTypes from "prop-types";
 import React from "react";
@@ -13,10 +16,44 @@ function ChoiceList(props) {
 	const {items, ordered} = props;
 	if (isEmpty(items)) return null;
 
-	const renderItem = (item, i) => {
+	const renderAbilityScoreAdjustmentItem = (item, i) => {
+		const {ability, modifier} = item;
+		const sign = modifier > 0 ? "+" : "";
+		const text = `${ability} ${sign}${modifier}`;
+		return renderStringItem(text, `AbilityScoreAdjustment-${i}`);
+	};
+	const renderFeatureItem = (item, i) => {
+		const {name, description} = item;
+		if (!description) return renderStringItem(name, `Feature-${i}`);
+		return (
+			<li key={`ChoiceList-Feature-${i}`}>
+				<div className={"ChoiceList-FeatureText"}>{name}</div>
+				<div className={"ChoiceList-FeatureDescription"}>
+					{description.map((paragraph, i) => <p key={`ChoiceList-FeatureDescription-${i}`}>{paragraph}</p>)}
+				</div>
+			</li>
+		);
+	};
+	const renderProficiencyItem = (item, i) => {
 		const {name, type} = item;
-		const text = type ? `${type}: ${name}` : name;
-		return (<li key={i}>{text}</li>)
+		const text = `${type}: ${name}`;
+		return renderStringItem(text, `Proficiency-${i}`);
+	};
+	const renderStringItem = (text, i) => {
+		return (<li key={`ChoiceList-${i}`}>{text}</li>);
+	};
+	const renderItem = (item, i) => {
+		if (typeof item === 'string') {
+			return renderStringItem(item, i);
+		}
+		const {name, type, ability, modifier} = item;
+		if (ability && modifier) {
+			return renderAbilityScoreAdjustmentItem(item, i);
+		} else if (name && type) {
+			return renderProficiencyItem(item, i);
+		} else {
+			return renderFeatureItem(item, i);
+		}
 	};
 	const renderItems = () => items.map((item, i) => renderItem(item, i));
 
@@ -28,10 +65,12 @@ function ChoiceList(props) {
 }
 
 ChoiceList.propTypes = {
-	items: PropTypes.arrayOf(PropTypes.shape({
-		name: PropTypes.string.isRequired,
-		type: PropTypes.string,
-	})).isRequired,
+	items: PropTypes.oneOfType([
+		AbilityScoreAdjustmentsPropType,
+		FeaturesPropType,
+		ProficienciesPropType,
+		PropTypes.arrayOf(PropTypes.string),
+	]).isRequired,
 	ordered: PropTypes.bool,
 };
 

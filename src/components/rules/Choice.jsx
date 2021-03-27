@@ -71,11 +71,11 @@ export const ChoicePropType = PropTypes.shape({
 	description: PropTypes.arrayOf(PropTypes.string),
 	type: PropTypes.string.isRequired,
 	pick: PropTypes.number.isRequired,
-	options: PropTypes.oneOf([
+	options: PropTypes.oneOfType([
 		AbilityScoreAdjustmentsPropType,
 		FeaturesPropType,
 		ProficienciesPropType,
-		PropTypes.string,
+		PropTypes.arrayOf(PropTypes.string),
 	]),
 	from: PropTypes.shape({
 		name: PropTypes.string.isRequired,
