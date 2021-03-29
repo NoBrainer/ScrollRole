@@ -32,7 +32,7 @@ function RulesForRaces() {
 	return (
 		<Grid container direction="column">
 			<Paper className={classes.paper}>
-				<Typography component="h1" variant="h4" display="block">Races</Typography>
+				<Typography component="h1" variant="h1" display="block">Races</Typography>
 			</Paper>
 			<BasicWrapper margin="bottom">
 				{renderRaces()}

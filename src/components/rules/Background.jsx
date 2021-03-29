@@ -19,12 +19,12 @@ const useStyles = makeStyles((theme) => ({
 function Background(props) {
 	const classes = useStyles();
 	const {background, summaryId} = props;
-	const {choices, description, equipment, features, name, proficiencies, suggestedCharacteristics} = background;
+	const {name, description, features, suggestedCharacteristics, equipment, proficiencies, choices} = background;
 
 	return (
 		<Accordion>
 			<AccordionSummary expandIcon={<ExpandMore/>} aria-controls="background-panel-content" id={summaryId}>
-				<Typography component="h2" variant="h5">{name}</Typography>
+				<Typography component="h2" variant="h2">{name}</Typography>
 			</AccordionSummary>
 			<AccordionDetails className={classes.details}>
 				<Description description={description}/>

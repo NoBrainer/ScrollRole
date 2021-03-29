@@ -32,7 +32,7 @@ function RulesForBackgrounds() {
 	return (
 		<Grid container direction="column">
 			<Paper className={classes.paper}>
-				<Typography component="h1" variant="h4" display="block">Backgrounds</Typography>
+				<Typography component="h1" variant="h1" display="block">Backgrounds</Typography>
 			</Paper>
 			<BasicWrapper margin="bottom">
 				{renderBackgrounds()}

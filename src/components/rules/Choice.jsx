@@ -1,4 +1,5 @@
 import {Typography} from "@material-ui/core";
+import {HEADER_COMPONENTS} from "common/Constants";
 import {AbilityScoreAdjustmentsPropType} from "components/rules/AbilityScoreAdjustments";
 import ChoiceList from "components/rules/ChoiceList";
 import {FeaturesPropType} from "components/rules/Features";
@@ -15,7 +16,7 @@ function Choice(props) {
 	const currentRules = rulesList.length > 0 ? rulesList[0] : {};
 	const {lists} = currentRules;
 
-	const {name, description, type, pick, options, from, allowDuplicates, key} = props;
+	const {name, description, type, pick, options, from, allowDuplicates, headerComponent, key} = props;
 	if (pick < 1) {
 		console.log(`Ignoring 'choice' without a 'pick' attribute with a 1+ value`);
 		return null;
@@ -24,8 +25,7 @@ function Choice(props) {
 		return null;
 	}
 
-	const otherProps = {};
-	if (key) otherProps.key = key;
+	const otherProps = {headerComponent, key};
 
 	const generateItems = () => {
 		//TODO: support allowDuplicate
@@ -84,6 +84,8 @@ export const ChoicePropType = PropTypes.shape({
 	}),
 	allowDuplicate: PropTypes.bool,
 	use: PropTypes.string,
+	headerComponent: PropTypes.oneOf(HEADER_COMPONENTS),
+	key: PropTypes.string,
 });
 
 Choice.propTypes = ChoicePropType;

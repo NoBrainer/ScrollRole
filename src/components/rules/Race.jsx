@@ -7,6 +7,7 @@ import Description, {DescriptionPropType} from "components/rules/Description";
 import Equipment from "components/rules/Equipment";
 import Features, {FeaturesPropType} from "components/rules/Features";
 import Proficiencies, {ProficienciesPropType} from "components/rules/Proficiencies";
+import Subraces, {SubracesPropType} from "components/rules/Subraces";
 import SuggestedCharacteristics from "components/rules/SuggestedCharacteristics";
 import PropTypes from "prop-types";
 import React from "react";
@@ -21,25 +22,25 @@ function Race(props) {
 	const classes = useStyles();
 	const {race, summaryId} = props;
 	const {
-		abilityScoreAdjustments, choices, description, equipment, features, name, proficiencies, speed, subraces,
-		suggestedCharacteristics
+		name, description, abilityScoreAdjustments, speed, features, suggestedCharacteristics, equipment, proficiencies,
+		choices, subraces,
 	} = race;
 
 	return (
 		<Accordion>
 			<AccordionSummary expandIcon={<ExpandMore/>} aria-controls="race-panel-content" id={summaryId}>
-				<Typography component="h2" variant="h5">{name}</Typography>
+				<Typography component="h2" variant="h2">{name}</Typography>
 			</AccordionSummary>
 			<AccordionDetails className={classes.details}>
 				<Description description={description}/>
 				<AbilityScoreAdjustments abilityScoreAdjustments={abilityScoreAdjustments}/>
-				<Description titleOverride={"Speed"} description={[`${speed}`]}/>
+				<Description headerText={"Speed"} description={[`${speed}`]}/>
 				<Features features={features}/>
 				<SuggestedCharacteristics suggestedCharacteristics={suggestedCharacteristics}/>
 				<Equipment equipment={equipment}/>
 				<Proficiencies proficiencies={proficiencies}/>
 				<Choices choices={choices}/>
-				{/*<Subrace subrace={} summaryId={}*/}
+				<Subraces subraces={subraces}/>
 			</AccordionDetails>
 		</Accordion>
 	);
@@ -53,7 +54,7 @@ export const RacePropType = PropTypes.shape({
 	features: FeaturesPropType,
 	proficiencies: ProficienciesPropType,
 	choices: ChoicesPropType,
-	// subraces: PropTypes.arrayOf(SubracePropType),
+	subraces: SubracesPropType,
 });
 
 Race.propTypes = {

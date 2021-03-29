@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import React from "react";
 
 function Condition(props) {
-	const {feature, level, proficiency} = props;
+	const {level, feature, proficiency} = props;
 	//TODO: implement
 	return (
 		<RulesSection headerText={"Condition"}>

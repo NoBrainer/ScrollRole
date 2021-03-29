@@ -1,49 +1,27 @@
-import {Accordion, AccordionDetails, AccordionSummary, Typography} from "@material-ui/core";
-import {makeStyles} from "@material-ui/core/styles";
-import {ExpandMore} from "@material-ui/icons";
 import AbilityScoreAdjustments, {AbilityScoreAdjustmentsPropType} from "components/rules/AbilityScoreAdjustments";
+import BasicWrapper from "components/rules/BasicWrapper";
 import Choices, {ChoicesPropType} from "components/rules/Choices";
 import Description, {DescriptionPropType} from "components/rules/Description";
-import Equipment from "components/rules/Equipment";
 import Features, {FeaturesPropType} from "components/rules/Features";
 import Proficiencies, {ProficienciesPropType} from "components/rules/Proficiencies";
-import SuggestedCharacteristics from "components/rules/SuggestedCharacteristics";
+import RulesSection from "components/rules/RulesSection";
 import PropTypes from "prop-types";
 import React from "react";
 
-const useStyles = makeStyles((theme) => ({
-	details: {
-		flexDirection: "column",
-	},
-}));
-
 function Subrace(props) {
-	const classes = useStyles();
-	const {subrace, summaryId} = props;
-	const {
-		abilityScoreAdjustments, age, alignment, choices, description, equipment, features, name, proficiencies,
-		size, speed, suggestedCharacteristics
-	} = subrace;
+	const {name, description, abilityScoreAdjustments, features, proficiencies, choices, key} = props;
+	const otherProps = {key};
 
 	return (
-		<Accordion>
-			<AccordionSummary expandIcon={<ExpandMore/>} aria-controls="race-panel-content" id={summaryId}>
-				<Typography component="h2" variant="h5">{name}</Typography>
-			</AccordionSummary>
-			<AccordionDetails className={classes.details}>
-				<Description description={description}/>
-				<AbilityScoreAdjustments abilityScoreAdjustments={abilityScoreAdjustments}/>
-				<Description titleOverride={"Age"} description={[age]}/>
-				<Description titleOverride={"Alignment"} description={[alignment]}/>
-				<Description titleOverride={"Size"} description={[size]}/>
-				<Description titleOverride={"Speed"} description={[speed]}/>
-				<Features features={features}/>
-				<SuggestedCharacteristics suggestedCharacteristics={suggestedCharacteristics}/>
-				<Equipment equipment={equipment}/>
-				<Proficiencies proficiencies={proficiencies}/>
-				<Choices choices={choices}/>
-			</AccordionDetails>
-		</Accordion>
+		<RulesSection headerText={`Subrace Option: ${name}`} {...otherProps}>
+			<BasicWrapper margin={'left'}>
+				<Description description={description} headerComponent={"h4"}/>
+				<AbilityScoreAdjustments abilityScoreAdjustments={abilityScoreAdjustments} headerComponent={"h4"}/>
+				<Features features={features} headerComponent={"h4"}/>
+				<Proficiencies proficiencies={proficiencies} headerComponent={"h4"}/>
+				<Choices choices={choices} headerComponent={"h4"}/>
+			</BasicWrapper>
+		</RulesSection>
 	);
 }
 
@@ -54,6 +32,7 @@ export const SubracePropType = PropTypes.shape({
 	features: FeaturesPropType,
 	proficiencies: ProficienciesPropType,
 	choices: ChoicesPropType,
+	key: PropTypes.string,
 });
 
 Subrace.propTypes = {

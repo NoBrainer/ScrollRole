@@ -1,3 +1,4 @@
+import {HEADER_COMPONENTS} from "common/Constants";
 import BasicList from "components/rules/BasicList";
 import RulesSection from "components/rules/RulesSection";
 import {isEmpty} from "lodash";
@@ -5,7 +6,7 @@ import PropTypes from "prop-types";
 import React from "react";
 
 function Proficiencies(props) {
-	const {proficiencies} = props;
+	const {proficiencies, headerComponent} = props;
 	if (isEmpty(proficiencies)) return null;
 
 	const renderProficiency = (proficiency) => {
@@ -14,7 +15,7 @@ function Proficiencies(props) {
 	};
 
 	return (
-		<RulesSection headerText="Proficiencies">
+		<RulesSection headerText="Proficiencies" headerComponent={headerComponent}>
 			<BasicList items={proficiencies.map(renderProficiency)}/>
 		</RulesSection>
 	);
@@ -29,6 +30,7 @@ export const ProficienciesPropType = PropTypes.arrayOf(ProficiencyPropType);
 
 Proficiencies.propTypes = {
 	proficiencies: ProficienciesPropType,
+	headerComponent: PropTypes.oneOf(HEADER_COMPONENTS),
 };
 
 export default Proficiencies

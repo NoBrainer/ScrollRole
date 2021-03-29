@@ -17,7 +17,7 @@ function SuggestedCharacteristics(props) {
 		if (isEmpty(items)) return null;
 		return (
 			<BasicWrapper margin="top">
-				<Typography component="h4" variant="h6">{title}</Typography>
+				<Typography component="h4" variant="h4">{title}</Typography>
 				<BasicList items={items} ordered={true}/>
 			</BasicWrapper>
 		);
