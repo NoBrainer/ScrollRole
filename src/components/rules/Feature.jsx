@@ -16,6 +16,7 @@ function Feature(props) {
 	);
 }
 
+//TODO: support {stat, modifier, per} attributes, like Hill Dwarf's Dwarven Toughness
 export const FeaturePropType = PropTypes.shape({
 	name: PropTypes.string.isRequired,
 	description: DescriptionPropType,

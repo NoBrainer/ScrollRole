@@ -1155,6 +1155,7 @@ races:
                 Whenever you make an Intelligence (History) check related to magic items, alchemical objects, or
                 technological devices, you can add twice your proficiency bonus, instead of any proficiency bonus you
                 normally apply.
+        choices:
           - name: Tinker
             description:
               - >
@@ -1163,6 +1164,8 @@ races:
                 after 24 hours (unless you spend 1 hour repairing it to keep the device functioning), or when you use
                 your action to dismantle it; at that time, you can reclaim the materials used to create it. You can have
                 up to three such devices active at one time.
+            type: feature
+            pick: 1
             options:
               - name: Clockwork Toy
                 description:

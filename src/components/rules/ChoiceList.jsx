@@ -2,6 +2,7 @@ import {makeStyles} from "@material-ui/core/styles";
 import {LIST_STYLES} from "common/Defaults";
 import {AbilityScoreAdjustmentsPropType} from "components/rules/AbilityScoreAdjustments";
 import {FeaturesPropType} from "components/rules/Features";
+import Paragraphs from "components/rules/Paragraphs";
 import {ProficienciesPropType} from "components/rules/Proficiencies";
 import {isEmpty} from "lodash";
 import PropTypes from "prop-types";
@@ -25,12 +26,10 @@ function ChoiceList(props) {
 	const renderFeatureItem = (item, i) => {
 		const {name, description} = item;
 		if (!description) return renderStringItem(name, `Feature-${i}`);
+		const paragraphs = [name, ...description];
 		return (
 			<li key={`ChoiceList-Feature-${i}`}>
-				<div className={"ChoiceList-FeatureText"}>{name}</div>
-				<div className={"ChoiceList-FeatureDescription"}>
-					{description.map((paragraph, i) => <p key={`ChoiceList-FeatureDescription-${i}`}>{paragraph}</p>)}
-				</div>
+				<Paragraphs paragraphs={paragraphs}/>
 			</li>
 		);
 	};
