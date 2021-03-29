@@ -3,7 +3,7 @@ import {makeStyles} from "@material-ui/core/styles";
 import {ExpandMore} from "@material-ui/icons";
 import Choices, {ChoicesPropType} from "components/rules/Choices";
 import Description from "components/rules/Description";
-import Equipment, {EquipmentPropType} from "components/rules/Equipment";
+import Equipment, {EquipmentsPropType} from "components/rules/Equipment";
 import Features, {FeaturesPropType} from "components/rules/Features";
 import Proficiencies, {ProficiencyPropType} from "components/rules/Proficiencies";
 import SuggestedCharacteristics, {SuggestedCharacteristicsPropType} from "components/rules/SuggestedCharacteristics";
@@ -43,7 +43,7 @@ export const BackgroundPropType = PropTypes.shape({
 	description: PropTypes.arrayOf(PropTypes.string),
 	features: FeaturesPropType,
 	suggestedCharacteristics: SuggestedCharacteristicsPropType,
-	equipment: PropTypes.arrayOf(EquipmentPropType),
+	equipment: EquipmentsPropType,
 	proficiencies: PropTypes.arrayOf(ProficiencyPropType),
 	choices: ChoicesPropType,
 });

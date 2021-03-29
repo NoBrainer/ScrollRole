@@ -18,8 +18,10 @@ function Equipment(props) {
 
 export const EquipmentPropType = PropTypes.string;
 
+export const EquipmentsPropType = PropTypes.arrayOf(EquipmentPropType);
+
 Equipment.propTypes = {
-	equipment: PropTypes.arrayOf(EquipmentPropType),
+	equipment: EquipmentsPropType,
 	headerComponent: PropTypes.oneOf(HEADER_COMPONENTS),
 };
 

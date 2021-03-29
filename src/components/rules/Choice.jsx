@@ -2,11 +2,12 @@ import {Typography} from "@material-ui/core";
 import {HEADER_COMPONENTS} from "common/Constants";
 import {AbilityScoreAdjustmentsPropType} from "components/rules/AbilityScoreAdjustments";
 import ChoiceList from "components/rules/ChoiceList";
+import {EquipmentsPropType} from "components/rules/Equipment";
 import {FeaturesPropType} from "components/rules/Features";
 import Paragraphs from "components/rules/Paragraphs";
 import {ProficienciesPropType} from "components/rules/Proficiencies";
 import RulesSection from "components/rules/RulesSection";
-import {chain, includes, isEmpty, isObject} from "lodash";
+import {chain, includes, isEmpty, isObject, uniq} from "lodash";
 import PropTypes from "prop-types";
 import React from "react";
 import {useSelector} from "react-redux";
@@ -28,8 +29,6 @@ function Choice(props) {
 	const otherProps = {headerComponent, key};
 
 	const generateItems = () => {
-		//TODO: support allowDuplicate
-		//TODO: support use
 		let items = options;
 		if (items && !isEmpty(items)) return items;
 
@@ -51,7 +50,7 @@ function Choice(props) {
 			console.log(`Unable to determine items for 'choice' attribute`);
 			items = [];
 		}
-		return items;
+		return allowDuplicates ? items : uniq(items);
 	};
 
 	const items = generateItems();
@@ -66,16 +65,18 @@ function Choice(props) {
 	);
 }
 
+export const CHOICE_TYPES = ['abilityScoreAdjustment', 'equipment', 'feature', 'proficiency'];
+
 export const ChoicePropType = PropTypes.shape({
 	name: PropTypes.string.isRequired,
 	description: PropTypes.arrayOf(PropTypes.string),
-	type: PropTypes.string.isRequired,
+	type: PropTypes.oneOf(CHOICE_TYPES).isRequired,
 	pick: PropTypes.number.isRequired,
 	options: PropTypes.oneOfType([
 		AbilityScoreAdjustmentsPropType,
+		EquipmentsPropType,
 		FeaturesPropType,
 		ProficienciesPropType,
-		PropTypes.arrayOf(PropTypes.string),
 	]),
 	from: PropTypes.shape({
 		name: PropTypes.string.isRequired,
@@ -83,10 +84,13 @@ export const ChoicePropType = PropTypes.shape({
 		types: PropTypes.arrayOf(PropTypes.string),
 	}),
 	allowDuplicate: PropTypes.bool,
-	use: PropTypes.string,
 	headerComponent: PropTypes.oneOf(HEADER_COMPONENTS),
 	key: PropTypes.string,
 });
+
+Choice.defaultProps = {
+	allowDuplicate: false,
+};
 
 Choice.propTypes = ChoicePropType;
 
