@@ -158,10 +158,13 @@ classes:
             rage on your turn as a bonus action.
           - >
             Once you have used all of your rages, you must finish a long rest before you can rage again.
-      - name: Rage Count
-        value: 2
-      - name: Rage Damage
-        value: '+2'
+        variables: #TODO: support this in the Feature component
+          - displayName: Rage Count
+            key: RAGE_COUNT
+            value: 2
+          - displayName: Rage Damage
+            key: RAGE_DAMAGE
+            value: 2
       - name: Unarmored Defense
         description:
           - >
