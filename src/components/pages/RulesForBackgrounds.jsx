@@ -14,19 +14,17 @@ function RulesForBackgrounds() {
 	const classes = useStyles();
 	const rulesList = useSelector((state) => state.rules.rulesList);
 	const currentRules = rulesList.length > 0 ? rulesList[0] : {};
-	const currentBackgrounds = currentRules.backgrounds;
+	const {backgrounds: currentBackgrounds} = currentRules;
 
 	const renderBackgrounds = () => {
 		if (!currentBackgrounds) return renderLoadingPlaceholder();
 		return currentBackgrounds.map(renderBackground);
 	};
-
 	const renderBackground = (background, i) => {
 		return (<Background key={i} background={background} summaryId={`background-panel-header-${i}`}/>);
 	};
-
 	const renderLoadingPlaceholder = () => {
-		return (<Paper className={classes.paper}>[Loading...]</Paper>);
+		return (<Paper className={classes.paper}>[Loading Backgrounds...]</Paper>);
 	};
 
 	return (

@@ -14,19 +14,17 @@ function RulesForRaces() {
 	const classes = useStyles();
 	const rulesList = useSelector((state) => state.rules.rulesList);
 	const currentRules = rulesList.length > 0 ? rulesList[0] : {};
-	const currentRaces = currentRules.races;
+	const {races: currentRaces} = currentRules;
 
 	const renderRaces = () => {
 		if (!currentRaces) return renderLoadingPlaceholder();
 		return currentRaces.map(renderRace);
 	};
-
 	const renderRace = (race, i) => {
 		return (<Race key={i} race={race} summaryId={`race-panel-header-${i}`}/>);
 	};
-
 	const renderLoadingPlaceholder = () => {
-		return (<Paper className={classes.paper}>[Loading...]</Paper>);
+		return (<Paper className={classes.paper}>[Loading Races...]</Paper>);
 	};
 
 	return (
