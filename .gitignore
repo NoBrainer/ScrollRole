@@ -6,6 +6,7 @@
 
 # testing
 /coverage
+e2e/selenium
 
 # production
 /build
